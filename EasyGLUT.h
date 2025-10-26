@@ -2,14 +2,14 @@
 
 // Защита от повторного включения заголовочного файла (include guard)
 // Предотвращает ошибки компиляции при многократном включении этого файла
-#ifndef EASYGLUT_H 
-#define EASYGLUT_H 
+#ifndef EASYGLUT_H
+#define EASYGLUT_H
 
 // Обеспечение совместимости с C++ (позволяет использовать функции в C-коде)
 // Если код компилируется как C++, оборачиваем объявления в extern "C"
-#ifdef __cplusplus 
-extern "C" { 
-    #endif 
+#ifdef __cplusplus
+extern "C" {
+    #endif
 
     // Функция для изменения положения окна
     void window_position(int x_position, int y_position);
@@ -25,21 +25,39 @@ extern "C" {
 
     // ==========================================================================================
 
+    // Добавление точки на график
+    void point(float x, float y);
     // Смена размера точек
     void set_point_size(float width);
     // Смена цвета точек (R, G, B в диапазоне от 0 до 255)
     void set_point_color(int r, int g, int b);
-    // Добавление точки на график
-    void point(float x, float y);
 
     // ==========================================================================================
 
+    // Добавление линии на график
+    void line(float xStart, float yStart, float xFinish, float yFinish);
     // Смена размера линии
     void set_line_width(float width);
     // Смена цвета линии (R, G, B в диапазоне от 0 до 255)
     void set_line_color(int r, int g, int b);
-    // Добавление линии на график
-    void line(float xStart, float yStart, float xFinish, float yFinish);
+
+    // ==========================================================================================
+
+    // Добавление ломаной линии на график
+    void broken_line(float* x_coords, float* y_coords, int vertex_count);
+    // Смена размера ломаной линии
+    void set_broken_line_width(float width);
+    // Смена цвета ломаной линии (R, G, B в диапазоне от 0 до 255)
+    void set_broken_line_color(int r, int g, int b);
+
+    // ==========================================================================================
+
+    // Добавление стрелки/вектора на график
+    void arrow(float xStart, float yStart, float xFinish, float yFinish);
+    // Смена толщины стрелки/вектора
+    void set_arrow_width(float width);
+    // Смена цвета стрелки/вектора (R, G, B в диапазоне от 0 до 255)
+    void set_arrow_color(int r, int g, int b);
 
     // ==========================================================================================
 
@@ -49,6 +67,15 @@ extern "C" {
     void set_circle_width(float width);
     // Смена цвета линии (R, G, B в диапазоне от 0 до 255)
     void set_circle_color(int r, int g, int b);
+
+    // ==========================================================================================
+
+    // Добавление эллипсиса на график
+    void ellipse(float x, float y, float a, float b);
+    // Смена толщины эллипсиса
+    void set_ellipse_width(float width);
+    // Смена цвета линии (R, G, B в диапазоне от 0 до 255)
+    void set_ellipse_color(int r, int g, int b);
 
     // ==========================================================================================
 
@@ -74,8 +101,8 @@ extern "C" {
     void show();
 
     // Завершение блока extern "C" для C++
-    #ifdef __cplusplus 
-} 
-#endif 
+    #ifdef __cplusplus
+}
+#endif
 // Конец include guard
-#endif // EASYGLUT_H 
+#endif // EASYGLUT_H
